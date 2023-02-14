@@ -1,0 +1,8 @@
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\bin\Debug\Knight_Short_Paths.exe.config
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\bin\Debug\Knight_Short_Paths.exe
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\bin\Debug\Knight_Short_Paths.pdb
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\obj\Debug\Knight_Short_Paths.csproj.AssemblyReference.cache
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\obj\Debug\Knight_Short_Paths.csproj.SuggestedBindingRedirects.cache
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\obj\Debug\Knight_Short_Paths.csproj.CoreCompileInputs.cache
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\obj\Debug\Knight_Short_Paths.exe
+C:\Users\TakiAcademy\source\repos\Knight_Short_Paths\Knight_Short_Paths\obj\Debug\Knight_Short_Paths.pdb
