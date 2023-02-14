@@ -1,0 +1,105 @@
+﻿@using System.Text;
+@{
+    ViewData["Title"] = "Home Page";
+    List<int[]> Result = ViewBag.Result;
+    int counter = 0;
+    StringBuilder path = new StringBuilder();
+}
+<div>Enter your Distanation Path : </div>
+<form method="post">
+    X: <input type="number" name="x" class="inputElement"  min="0" max="9"/>
+    Y: <input type="number" name="y" class="inputElement"  min="0" max="9"/>
+    <input type="submit" value="Calculate Shortest Path" class="btnSubmit" />
+</form>
+
+<span> Y : &#10230;</span>
+<br />
+<span> X : &#8595;</span>
+@if (Result != null)
+{
+    <div class="chessboard">
+
+        @for (int i = 0; i < 9; i++)
+        {
+            <div>
+
+                @for (int j = 0; j < 9; j++)
+                {
+                    @if (counter % 2 == 0)
+                    {
+
+                        <div class="black" onclick="callPath(@i,@j)">
+                            @(Result.Any(a => a.First().Equals(i) && a.GetValue(1).Equals(j)) ? Html.Raw(" &#9822") : "")
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="white" onclick="callPath(@i,@j)">
+                            @(Result.Any(a => a.First().Equals(i) && a.GetValue(1).Equals(j)) ? Html.Raw(" &#9822") : "")
+                        </div>
+                    }
+                    counter++;
+
+
+
+                }
+
+            </div>
+            <br />
+        }
+
+    </div>
+    <div class="title">* Shortest path from (0,0) to (@Result.Last().GetValue(0),@Result.Last().GetValue(1)) </div>
+    @foreach (var result in Result)
+    {
+        path.Append(" (" + @result[0] + "," + @result[1] + ") → ");
+    }
+
+    <div class="title"> * @path.ToString().Remove(path.Length-2)</div>
+}
+else
+{
+
+    <div class="chessboard">
+
+        @for (int i = 0; i < 9; i++)
+        {
+            <div>
+
+                @for (int j = 0; j < 9; j++)
+                {
+                    @if (counter % 2 == 0)
+                    {
+
+                        @if (i == 0 && j == 0)
+                        {
+                            <div class="black">
+                                &#9822
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="black" onclick="callPath(@i,@j)">
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div class="white" onclick="callPath(@i,@j)">
+                        </div>
+                    }
+                    counter++;
+
+                }
+
+            </div>
+            <br />
+        }
+    </div>
+}
+<br />
+
+<span> </span>
+
