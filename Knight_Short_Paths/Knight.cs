@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -43,6 +44,7 @@ namespace Knight_Short_Paths
                 var current = queue.Dequeue();
                 int i = current.Item1;
                 int j = current.Item2;
+
                 for (int k = 0; k < 8; k++)
                 {
                     int x1 = i + directions[k, 0];
@@ -58,6 +60,8 @@ namespace Knight_Short_Paths
             return board;
 
         }
+
+
 
         public static List<Tuple<int, int>> getPathPoints(int[,] board, int size, int x, int y)
         {
@@ -90,28 +94,56 @@ namespace Knight_Short_Paths
 
 
 
-        public static void CreateImageOutput(List<Tuple<int, int>> path, int[,] board, int size, string filename = "Shortest-Path")
+
+       /* public static int[,] BFS_MultiProccessing(int size)
         {
-            // Create the image
-            /*            Bitmap image = new Bitmap(size, size);
-                        for (int i = 0; i < size; i++)
+            int[,] board = new int[size, size];
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    board[i, j] = -1;
+                }
+            }
+
+            //BFS
+            ConcurrentQueue<Tuple<int, int>> queue = new ConcurrentQueue<Tuple<int, int>>();
+            queue.Enqueue(new Tuple<int, int>(0, 0));
+            board[0, 0] = 0;
+
+            while (queue.Count > 0)
+            {
+                int count = queue.Count;
+                Parallel.For(0, count, (i) =>
+                {
+                    if (queue.TryDequeue(out Tuple<int, int> current))
+                    {
+                        int x = current.Item1;
+                        int y = current.Item2;
+                        for (int k = 0; k < 8; k++)
                         {
-                            for (int j = 0; j < size; j++)
+                            int x1 = x + directions[k, 0];
+                            int y1 = y + directions[k, 1];
+                            if (x1 >= 0 && x1 < size && y1 >= 0 && y1 < size && board[x1, y1] == -1)
                             {
-                                if (board[i, j] == 0)
-                                {
-                                    image.SetPixel(j, i, Color.Black);
-                                }
-                                else if (path.Contains(new Tuple<int, int>(i, j)))
-                                {
-                                    image.SetPixel(j, i, Color.Blue);
-                                }
-                                else
-                                {
-                                    image.SetPixel(j, i, Color.White);
-                                }
+                                queue.Enqueue(new Tuple<int, int>(x1, y1));
+                                board[x1, y1] = board[x, y] + 1;
                             }
-                        }*/
+                        }
+                    }
+                });
+            }
+
+            return board;
+        }*/
+
+
+
+
+
+        public static void CreateImageOutput(List<Tuple<int, int>> path, int size)
+        {
+
 
             //Get Result String
             string result = stringOutput(size, path);
@@ -131,11 +163,7 @@ namespace Knight_Short_Paths
             // Save the image
             image.Save("knight_path.bmp", ImageFormat.Bmp);
 
-
-
             Console.WriteLine("A Representation Of Type Image Can be Found in directory of the project.");
-
-
 
         }
 
@@ -169,3 +197,6 @@ namespace Knight_Short_Paths
         }
     }
 }
+
+
+

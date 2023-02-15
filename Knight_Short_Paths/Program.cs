@@ -36,12 +36,12 @@ namespace Knight_Short_Path
             int[,] board = Knight.BFS(size);
             // Path (x,y)
             List<Tuple<int, int>> path = Knight.getPathPoints(board, size, x, y);
-            Knight.CreateImageOutput(path, board, size);
+            Knight.CreateImageOutput(path, size);
 
             // string Result Format
             string result = Knight.stringOutput(size, path);
 
-            if (size < 100)
+            if (size < 11)
             {
                 Console.WriteLine(result);
             }
